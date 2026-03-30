@@ -1,0 +1,33 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ipch/
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.idb
+*.log
+*.tlog
+*.recipe
+*.lastbuildstate
+*.enc
+*.aps
+*.exe
+*.dll
+*.lib
+*.exp
+
+# Temporary files
+*.tmp
+*.bak
+*.cache

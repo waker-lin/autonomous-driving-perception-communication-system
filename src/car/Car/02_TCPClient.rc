@@ -1,0 +1,522 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#include ""res\\My02_TCPClient.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#if !defined(_AFXDLL)\r\n"
+    "#include ""l.CHS\\afxribbon.rc""   // MFC 功能区和控制条资源\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "res\\02_TCPClient.ico"
+
+AFX_ID_PREVIEW_PREV     ICON                    "res\\02_TCPClient.ico"
+
+IDI_ICON2               ICON                    "res\\icon2.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MY02_TCPCLIENT_DIALOG DIALOGEX 0, 0, 401, 345
+STYLE DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Car"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "AICar",IDC_STATIC,7,7,387,331
+    EDITTEXT        IDC_EDIT1,77,15,6,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    PUSHBUTTON      "连接服务器",IDC_BUTTON1,230,240,50,14
+    PUSHBUTTON      "断开连接",IDC_BUTTON2,303,240,50,14
+    PUSHBUTTON      "发送",IDC_BUTTON3,230,218,50,14
+    EDITTEXT        IDC_EDIT3,225,189,134,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_LIST | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,220,26,157,134,WS_EX_DLGMODALFRAME
+    PUSHBUTTON      "清空消息",IDC_BUTTON4,303,219,50,14
+    CONTROL         "",IDC_IPADDRESS1,"SysIPAddress32",NOT WS_VISIBLE | WS_TABSTOP,85,14,10,11
+    PUSHBUTTON      "启动",IDC_BUTTON5,108,143,50,14
+    PUSHBUTTON      "暂停",IDC_BUTTON6,158,162,50,14
+    PUSHBUTTON      "继续",IDC_BUTTON7,159,144,50,14
+    PUSHBUTTON      "停止",IDC_BUTTON8,109,162,50,14
+    PUSHBUTTON      "打开文件",IDC_BUTTON9,280,7,50,14,NOT WS_VISIBLE
+    GROUPBOX        "传感器数据",IDC_STATIC,7,16,150,114
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | NOT WS_VISIBLE | WS_BORDER | WS_TABSTOP,73,7,20,13
+    GROUPBOX        "传感器控制",IDC_STATIC,7,132,203,57
+    GROUPBOX        "服务器通信",IDC_STATIC,220,176,153,79
+    GROUPBOX        "网络数据记录",IDC_STATIC,215,16,168,151
+    PUSHBUTTON      "查询",IDC_BUTTON10,314,293,50,14
+    COMBOBOX        IDC_COMBO1,54,141,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "串口号",IDC_STATIC,140,23,23,8,NOT WS_VISIBLE
+    LTEXT           "波特率",IDC_STATIC,139,10,23,8,NOT WS_VISIBLE
+    COMBOBOX        IDC_COMBO2,174,7,48,30,CBS_DROPDOWN | CBS_SORT | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_MSCOMM1,"{648A5600-2C6E-101B-82B6-000000000014}",WS_TABSTOP,351,193,22,20
+    CONTROL         "定时发送",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,163,46,9
+    GROUPBOX        "数据存储",IDC_STATIC,306,267,63,66
+    EDITTEXT        IDC_EDIT2,378,113,6,12,ES_MULTILINE | ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "速度",IDC_STATIC,25,40,15,8
+    LTEXT           "前车距离",IDC_STATIC,18,64,30,8
+    LTEXT           "前方行人数",IDC_STATIC,14,95,37,8
+    EDITTEXT        IDC_EDIT4,347,137,18,12,ES_MULTILINE | ES_AUTOHSCROLL | NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT5,339,126,9,12,ES_MULTILINE | ES_AUTOHSCROLL | NOT WS_VISIBLE
+    COMBOBOX        IDC_COMBO3,176,22,48,30,CBS_DROPDOWN | CBS_SORT | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "传感器类型",IDC_STATIC,16,143,37,8
+    CONTROL         "",IDC_MSCOMM3,"{648A5600-2C6E-101B-82B6-000000000014}",WS_TABSTOP,340,104,22,20
+    EDITTEXT        IDC_EDIT6,68,36,74,13,ES_MULTILINE | ES_AUTOHSCROLL,WS_EX_LEFTSCROLLBAR
+    CONTROL         "",IDC_ANIMATE1,"SysAnimate32",NOT WS_VISIBLE | WS_BORDER | WS_TABSTOP,378,113,16,14
+    CONTROL         "",IDC_ANIMATE2,"SysAnimate32",NOT WS_VISIBLE | WS_BORDER | WS_TABSTOP,343,136,15,14
+    EDITTEXT        IDC_EDIT7,70,65,72,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,66,92,73,14,ES_AUTOHSCROLL
+    CONTROL         "MfcButton1",IDC_MFCBUTTON1,"MfcButton",NOT WS_VISIBLE | WS_TABSTOP,375,111,15,10
+    ICON            IDI_ICON1,IDC_STATIC,374,105,20,20,NOT WS_VISIBLE
+    PUSHBUTTON      "云端传输",IDC_BUTTON11,314,313,50,14
+    PUSHBUTTON      "保存文件",IDC_BUTTON12,312,275,50,14
+    PUSHBUTTON      "视觉检测",IDC_BUTTON13,232,293,50,14
+    GROUPBOX        "AI分析",IDC_STATIC,223,263,73,71
+    PUSHBUTTON      "数据可视化",IDC_BUTTON14,231,315,50,14
+    PUSHBUTTON      "通信",IDC_BUTTON15,233,272,50,14
+    CONTROL         "",IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,95,251,9,8
+    PUSHBUTTON      "Button16",IDC_BUTTON16,176,209,50,14
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 310, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,199,155,50,14
+    PUSHBUTTON      "取消",IDCANCEL,253,155,50,14
+    PUSHBUTTON      "Button1",IDC_BUTTON1,30,106,50,14
+    LTEXT           "Static",IDC_STATIC,15,32,18,8
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,172,16,60,50
+    COMBOBOX        IDC_COMBO1,39,32,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Static",IDC_STATIC,14,56,18,8
+    LTEXT           "Static",IDC_STATIC,14,77,18,8
+    COMBOBOX        IDC_COMBO2,37,55,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO3,40,75,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 406, 288
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,392,181,WS_EX_LEFTSCROLLBAR
+    LTEXT           "时间",IDC_STATIC,198,195,15,8,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT1,326,181,40,14,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT2,73,208,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO1,178,208,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "用户",IDC_STATIC,47,211,15,8
+    LTEXT           "传感器类型",IDC_STATIC,133,210,37,8
+    PUSHBUTTON      "查询",IDC_BUTTON1,301,216,50,14
+    PUSHBUTTON      "退出",IDC_BUTTON2,300,256,50,14
+    LTEXT           "最小值",IDC_STATIC,52,259,22,8
+    LTEXT           "最大值",IDC_STATIC,52,237,22,8
+    EDITTEXT        IDC_EDIT3,80,233,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,80,255,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO2,226,194,48,30,CBS_DROPDOWN | CBS_SORT | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "查询条件",IDC_STATIC,39,196,196,86
+    GROUPBOX        "查询控制",IDC_STATIC,293,200,64,74
+    GROUPBOX        "数值范围",IDC_STATIC,47,226,80,48
+    PUSHBUTTON      "显示全部",IDC_BUTTON3,300,235,50,14
+    LTEXT           "起始时间",IDC_STATIC,141,240,29,8
+    LTEXT           "终止时间",IDC_STATIC,140,259,29,8
+    GROUPBOX        "时间范围",IDC_STATIC,137,226,91,45
+    EDITTEXT        IDC_EDIT5,176,238,45,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,177,256,44,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG3 DIALOGEX 0, 0, 392, 254
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "取消",IDCANCEL,271,209,50,14
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,22,22,185,119
+    GROUPBOX        "在线车辆信息",IDC_STATIC,7,7,208,145
+    EDITTEXT        IDC_EDIT1,286,46,73,14,ES_AUTOHSCROLL
+    GROUPBOX        "车际通信设置",IDC_STATIC,232,29,136,59
+    LTEXT           "对方端口号",IDC_STATIC,244,47,37,8
+    PUSHBUTTON      "发送",IDC_BUTTON1,271,158,50,14
+    EDITTEXT        IDC_EDIT2,281,108,70,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,24,186,161,47,ES_AUTOHSCROLL
+    GROUPBOX        "接受消息显示",IDC_STATIC,14,174,181,66
+    LTEXT           "传输内容",IDC_STATIC,239,109,29,8
+    PUSHBUTTON      "数据共享",IDC_BUTTON2,270,136,50,14
+    GROUPBOX        "数据传输",IDC_STATIC,229,97,129,86
+    PUSHBUTTON      "确定",IDC_BUTTON3,276,68,50,14
+    PUSHBUTTON      "显示车辆信息",IDC_BUTTON4,72,156,50,14
+    PUSHBUTTON      "连接",IDC_BUTTON5,144,158,50,14
+END
+
+IDD_DIALOG4 DIALOGEX 0, 0, 293, 229
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "用户名",IDC_STATIC,52,55,22,8
+    LTEXT           "密码",IDC_STATIC,50,87,15,8
+    EDITTEXT        IDC_EDIT1,47,55,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,40,79,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "登录",IDC_BUTTON1,107,145,50,14
+    CONTROL         "显示密码",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,49,44,44,10
+END
+
+IDD_DIALOG5 DIALOGEX 0, 0, 616, 371
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "登录",IDC_BUTTON1,274,210,74,34
+    LTEXT           "用户名",IDC_STATIC,7,7,22,8
+    LTEXT           "密码",IDC_STATIC,237,172,15,8
+    EDITTEXT        IDC_EDIT1,286,143,66,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,285,171,68,14,ES_AUTOHSCROLL
+    CONTROL         "显示密码",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,372,184,44,10
+    LTEXT           "用户名",IDC_STATIC,226,141,22,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "02_TCPClient"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "02_TCPClient.exe"
+            VALUE "LegalCopyright", "TODO:  (C) <公司名>。  保留所有权利。"
+            VALUE "OriginalFilename", "02_TCPClient.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_MY02_TCPCLIENT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 394
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 338
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 303
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 399
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 282
+    END
+
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 385
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 247
+    END
+
+    IDD_DIALOG4, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 222
+    END
+
+    IDD_DIALOG5, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 609
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 364
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_MY02_TCPCLIENT_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+END
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG3 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG4 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG5 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MY02_TCPCLIENT_DIALOG DLGINIT
+BEGIN
+    IDC_MSCOMM1, 0x376, 102, 0
+0x0013, 0x0000, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 
+0x0068, 0x0074, 0x0020, 0x0028, 0x0063, 0x0029, 0x0020, 0x0031, 0x0039, 
+0x0039, 0x0034, 0x0020, 0x4321, 0x1234, 0x0008, 0x0000, 0x03b9, 0x0000, 
+0x03b9, 0x0000, 0x5601, 0x648a, 0x0000, 0x0006, 0x0000, 0x0001, 0x0400, 
+0x0000, 0x0200, 0x0000, 0x2580, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x003f, 0x0000, 0x0001, 0x0000, 
+    IDC_MSCOMM3, 0x376, 102, 0
+0x0013, 0x0000, 0x0043, 0x006f, 0x0070, 0x0079, 0x0072, 0x0069, 0x0067, 
+0x0068, 0x0074, 0x0020, 0x0028, 0x0063, 0x0029, 0x0020, 0x0031, 0x0039, 
+0x0039, 0x0034, 0x0020, 0x4321, 0x1234, 0x0008, 0x0000, 0x03b9, 0x0000, 
+0x03b9, 0x0000, 0x5601, 0x648a, 0x0000, 0x0006, 0x0000, 0x0001, 0x0400, 
+0x0000, 0x0200, 0x0000, 0x2580, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x003f, 0x0000, 0x0001, 0x0000, 
+    IDC_MFCBUTTON1, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG
+//
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#include "res\My02_TCPClient.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#if !defined(_AFXDLL)
+#include "l.CHS\afxribbon.rc"   // MFC 功能区和控制条资源
+#endif
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+
+
