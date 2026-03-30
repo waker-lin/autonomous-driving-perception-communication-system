@@ -156,7 +156,3 @@
 - 仓库已经去掉了 `Debug`、`Release`、`.user`、`.aps` 等本地产物
 - 首页使用的流程图和界面图，来自我原始课程说明书中的素材整理
 - 代码里仍保留少量课程时期的本机路径和硬编码配置，它们本身也是这个项目当前工程边界的一部分
-
-## License
-
-This repository is released under the [`MIT License`](./LICENSE).
