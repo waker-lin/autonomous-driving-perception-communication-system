@@ -1,59 +1,44 @@
 # Autonomous Driving Perception Communication System
 
-自动驾驶感知通信系统课程项目整理版。
+这是我在课程设计中完成的一个三端协同系统。我没有把它做成单个窗口里的功能拼接，而是把问题拆成了 `Sensor`、`Car`、`DataSrv` 三个端，分别处理传感器采集、车辆侧交互和服务端汇聚。
 
-这个仓库面向三类读者：
+这个仓库最想展示的不是“我做了一个自动驾驶 demo”，而是我怎么把一个同时涉及 `串口通信`、`TCP/IP`、`GUI`、`日志留存`、`车车通信` 的问题，先拆清楚，再一步步落成一个能运行、能演示、也能继续工程化的系统。
 
-- 老师：快速看懂问题定义、系统拆分和实现边界
-- HR：快速判断我是否能把一个含设备、通信、界面、数据流的问题落成可运行系统
-- 普通开发者：快速定位 MFC + 串口 + TCP/IP + 多端协同 的参考实现
-
-如果只看 1 分钟，建议先看这三点：
-
-- 我把题目拆成了 `Sensor / Car / DataSrv` 三端，而不是做成单窗口 demo
-- 我同时处理了 `串口采集`、`TCP 上传`、`服务端汇聚`、`CSV 查询`、`车车通信`
-- 我不仅给出能运行的方案，也明确指出了后续工程化该从哪里继续改
-
-## Project Snapshot
+## 我做了什么
 
 `Course Project · 2024.02.01 - 2024.03.01`
 
 `Role · 系统拆分、串口与 TCP/IP 通信实现、车辆交互流程设计`
 
-基于 C++ 开发，综合使用 `MFC`、`MSComm`、`WinSock`、`STL` 与多线程机制，设计并实现 `Sensor`、`Car`、`DataSrv` 三端协同系统，完成感知数据的串口采集、TCP/IP 上传、服务端数据预警反馈与 CSV 日志查询。
+我基于 `C++` 开发，综合使用了 `MFC`、`MSComm`、`WinSock`、`STL` 和多线程机制，完成了这几个核心能力：
 
-在主数据链路之外，额外实现了基于端口号寻址和服务器中转的车辆间消息交互。当前系统中的传感器数据仍以模拟为主，后续可进一步接入真实设备并完善结构化协议、线程安全机制与数据管理架构。
+- 用传感器端模拟速度、车距、行人检测等感知数据
+- 用车辆端接收串口数据、展示状态，并通过 TCP 上传服务端
+- 用服务端管理连接、回传信息、记录状态，并承担中转职责
+- 用 CSV 做基础日志留存和查询
+- 在主链路之外，再实现一条车辆间通信链路
 
-## Quick Evaluation
+## 我是怎么拆这个问题的
 
-老师视角可以重点看：
+我先把题目拆成四个子问题：
 
-- 我是如何先定义系统边界，再分模块实现，而不是直接堆界面
-- 三端之间的数据流是否完整闭环
-- 我对当前方案不足和后续演进是否有清楚判断
+1. 传感器数据怎么统一采集，并稳定送到车辆端
+2. 车辆端怎么同时处理串口输入、界面展示和网络上传
+3. 服务端怎么同时承担接入、展示、反馈和存档职责
+4. 车辆之间怎么在没有固定地址簿的前提下完成通信
 
-HR 视角可以重点看：
+对应地，我把系统拆成了三个端：
 
-- 这是一个跨 `设备通信 + 网络通信 + GUI + 数据留痕` 的综合型项目
-- 我承担的是系统拆分、通信实现和交互流程设计，不是只补某个局部功能
-- 仓库里既有可运行代码，也有对 tradeoff 和 engineering debt 的说明
+- `Sensor`
+  负责模拟或采集传感器数据，并通过串口输出
+- `Car`
+  负责接收传感器数据、展示状态、上传服务端、查询日志、发起车车通信
+- `DataSrv`
+  负责 TCP 监听、连接管理、服务端反馈、端口登记和消息中转
 
-## Problem Shape
+这套拆法对我来说很重要，因为它让我先把系统边界定义清楚，再分别解决每一端的问题，而不是一开始就把所有逻辑塞进一个工程里。
 
-我把题目拆成了四个子问题：
-
-1. 传感器数据如何被统一采集，并从本地串口送入车辆端界面
-2. 车辆端如何把多源感知数据上传到中心端，并接收预警或建议
-3. 服务端如何同时承担汇聚、展示、转发和基础存档职责
-4. 车辆之间如何在没有点对点固定地址簿的前提下完成消息交互
-
-对应的系统拆分是：
-
-- `Sensor`：模拟或采集不同传感器数据，负责串口侧输出
-- `Car`：接收传感器数据，展示状态，上传服务器，并支持车辆间通信与日志查询
-- `DataSrv`：负责 TCP 监听、连接管理、数据回传、端口登记和辅助转发
-
-## Architecture
+## 系统结构
 
 ```mermaid
 flowchart LR
@@ -64,93 +49,76 @@ flowchart LR
     C --> L["CSV logs / query UI"]
 ```
 
-主链路负责感知上报与服务端反馈，辅助链路负责车辆间端口配对和中转通信。这种拆法的价值在于：
+其中：
 
-- 把“感知上传”和“车车通信”从职责上分开，避免所有逻辑塞进一个 socket 通道
-- 保留了 GUI 演示效果，适合课程答辩与功能验证
-- 让后续真实传感器接入、协议升级和线程治理有明确演进落点
+- 主链路负责感知数据上传和服务端反馈
+- 辅助链路负责车辆间端口配对和消息中转
 
-## What Is In This Repository
+我这样做，是因为“感知上传”和“车车通信”本质上是两类问题，应该先在职责上分开。
 
-- [`src/sensor/Sensor.sln`](./src/sensor/Sensor.sln)：传感器端工程
-- [`src/car/Car.sln`](./src/car/Car.sln)：车辆端工程
-- [`src/data-server/DataSrv.sln`](./src/data-server/DataSrv.sln)：服务端工程
-- [`docs/architecture.md`](./docs/architecture.md)：系统拆分与关键流程
-- [`docs/engineering-review.md`](./docs/engineering-review.md)：当前实现的工程评估、风险与下一步改造方向
+## 这个仓库里有什么
 
-## Key Implementation Points
+- [`src/sensor/Sensor.sln`](./src/sensor/Sensor.sln)
+  传感器端工程
+- [`src/car/Car.sln`](./src/car/Car.sln)
+  车辆端工程
+- [`src/data-server/DataSrv.sln`](./src/data-server/DataSrv.sln)
+  服务端工程
+- [`docs/architecture.md`](./docs/architecture.md)
+  我对系统拆分和数据流的整理
+- [`docs/engineering-review.md`](./docs/engineering-review.md)
+  我对当前实现边界、风险和后续改造方向的判断
 
-### 1. Sensor side
+## 你可以先看哪里
 
-- 通过 `MSComm` 封装串口配置与收发
-- 把速度、车距、行人检测抽象成独立传感器类
-- 当前数据源以随机模拟为主，便于先验证传输链路和 UI 交互
+如果你想快速判断这个项目做到了什么，我建议这样看：
 
-代表文件：
+- 想看系统拆分：先看 [`docs/architecture.md`](./docs/architecture.md)
+- 想看车辆端主流程：看 [`src/car/Car/02_TCPClientDlg.cpp`](./src/car/Car/02_TCPClientDlg.cpp)
+- 想看日志查询：看 [`src/car/Car/DataSearch.cpp`](./src/car/Car/DataSearch.cpp)
+- 想看车辆间通信：看 [`src/car/Car/CarCommu.cpp`](./src/car/Car/CarCommu.cpp)
+- 想看服务端连接管理和转发：看 [`src/data-server/DataSrv/ServerSocket.cpp`](./src/data-server/DataSrv/ServerSocket.cpp) 和 [`src/data-server/DataSrv/MyServerSocket.cpp`](./src/data-server/DataSrv/MyServerSocket.cpp)
+- 想看传感器抽象：看 [`src/sensor/Sensor/CSensor.h`](./src/sensor/Sensor/CSensor.h)
 
-- [`src/sensor/Sensor/CSensor.h`](./src/sensor/Sensor/CSensor.h)
-- [`src/sensor/Sensor/CSpeedSensor.cpp`](./src/sensor/Sensor/CSpeedSensor.cpp)
-- [`src/sensor/Sensor/CDistanceSensor.cpp`](./src/sensor/Sensor/CDistanceSensor.cpp)
-- [`src/sensor/Sensor/CPerSensor.cpp`](./src/sensor/Sensor/CPerSensor.cpp)
-- [`src/sensor/Sensor/02_TCPClientDlg.cpp`](./src/sensor/Sensor/02_TCPClientDlg.cpp)
+## 我认为这个项目真正有价值的地方
 
-### 2. Car side
+我觉得这个项目最值得展示的，不是“用了多少技术名词”，而是这几个判断：
 
-- 使用 MFC 界面承接串口数据显示、TCP 连接、状态提示和日志查询
-- 将车辆端作为主数据消费节点，同时承担上传、展示和交互职责
-- 增加 CSV 查询窗口与车车通信窗口，让系统不只是“收发数据”，而是形成完整闭环
+- 我先用模拟传感器把链路跑通，而不是一开始就被真实硬件卡住
+- 我先把 `串口 + TCP + GUI + 日志` 串成闭环，再继续加功能
+- 我没有把车车通信直接糊进主上传链路，而是单独拆了辅助服务器
+- 我保留了课程阶段的工程边界，并明确知道下一步应该往哪里改
 
-代表文件：
+换句话说，这个项目体现的是我的处理方式：
 
-- [`src/car/Car/02_TCPClientDlg.cpp`](./src/car/Car/02_TCPClientDlg.cpp)
-- [`src/car/Car/DataSearch.cpp`](./src/car/Car/DataSearch.cpp)
-- [`src/car/Car/CarCommu.cpp`](./src/car/Car/CarCommu.cpp)
+`先把问题收缩到可解范围，再做出能运行的系统，最后识别哪里需要继续工程化。`
 
-### 3. DataSrv side
+## 当前实现边界
 
-- 主服务器监听 `8888`，负责车辆连接接入与消息回传
-- 辅助服务器监听 `8811`，基于端口号建立车辆配对关系
-- 使用列表与 CSV 做基础连接登记，支持演示连接状态变化
+这个仓库不是“已经产品化”的版本，我也不想把它包装成那样。它现在的边界很明确：
 
-代表文件：
+- 传感器数据仍以模拟为主，还没有接入真实设备协议
+- 一部分网络消息仍然是字符串级别，协议还不够结构化
+- UI、网络、文件读写之间仍有耦合
+- 线程模型已经开始用，但还不够完整
+- CSV 更像课程阶段的数据留痕方案，不是正式数据层
 
-- [`src/data-server/DataSrv/02_TCPServerDlg.cpp`](./src/data-server/DataSrv/02_TCPServerDlg.cpp)
-- [`src/data-server/DataSrv/ServerSocket.cpp`](./src/data-server/DataSrv/ServerSocket.cpp)
-- [`src/data-server/DataSrv/MyServerSocket.cpp`](./src/data-server/DataSrv/MyServerSocket.cpp)
+这些不是我想掩盖的问题，反而是我希望读者能看到的地方，因为它们说明我知道系统已经做到哪里，也知道继续往前该怎么改。
 
-## Why This Project Shows Problem-Solving Ability
+更细的工程判断见 [`docs/engineering-review.md`](./docs/engineering-review.md)。
 
-这个项目的价值不在于“自动驾驶”概念本身，而在于把一个跨设备、跨进程、跨通信方式的问题拆成了可迭代的三端系统：
+## 运行方式
 
-- 先用模拟传感器替代真实硬件，优先验证数据链路
-- 先用 GUI 把链路可视化，再补日志和查询
-- 先用字符串协议与端口配对把功能跑通，再考虑协议结构化
-- 先形成可演示闭环，再识别线程安全、配置解耦和数据建模等工程问题
+开发环境基于 `Windows + Visual Studio + MFC`。
 
-这类处理方式更接近真实开发中的 `problem shape -> working system -> engineering refinement`，而不是只完成单点功能。
-
-## Build Notes
-
-开发环境基于 Windows + Visual Studio + MFC。
-
-直接打开以下解决方案即可查看三端工程：
+可以直接打开以下解决方案查看三端工程：
 
 - `src/sensor/Sensor.sln`
 - `src/car/Car.sln`
 - `src/data-server/DataSrv.sln`
 
-说明：
+## 说明
 
-- 仓库已去掉 `Debug/Release/.user/.aps` 等本地产物
-- 代码中仍保留部分课程时期的本机路径和 CSV 路径，用于说明原始实现边界
-- `Car` 工程里原先引用了若干桌面资源文件，这里已保留源码主体并将仓库整理为便于阅读与继续清理的状态
-
-## Known Gaps
-
-- 传感器数据仍以随机模拟为主，尚未接入真实设备协议
-- 网络协议主要依赖字符串和端口号，缺少结构化消息体与版本管理
-- UI、网络、文件写入和业务逻辑耦合较深
-- 存在线程模型较粗、共享状态边界不清的问题
-- CSV 更像课程阶段的数据留痕方案，距离正式数据层还有明显差距
-
-这些问题不是回避点，而是这个仓库里最适合继续展开的工程化切入口。详细说明见 [`docs/engineering-review.md`](./docs/engineering-review.md)。
+- 仓库已经去掉了 `Debug`、`Release`、`.user`、`.aps` 等本地产物
+- 我保留了原始课程项目的主体结构，方便别人直接看代码和工程组织
+- 代码里仍有少量课程时期的本机路径和硬编码配置，它们本身也是这个项目当前工程边界的一部分
